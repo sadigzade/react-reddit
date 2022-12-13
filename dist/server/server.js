@@ -7,8 +7,17 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/shared/header.scss":
+/*!********************************!*\
+  !*** ./src/shared/header.scss ***!
+  \********************************/
+/***/ ((module) => {
+
+eval("// Exports\nmodule.exports = {\n\t\"example\": \"header__example--3gOEH\"\n};\n\n\n//# sourceURL=webpack://react-reddit/./src/shared/header.scss?");
+
+/***/ }),
 
 /***/ "./src/shared/Header.jsx":
 /*!*******************************!*\
@@ -16,7 +25,8 @@
   \*******************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Header = void 0;\nconst react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\nfunction Header() {\n    return (react_1.default.createElement(\"header\", null,\n        react_1.default.createElement(\"h1\", null, \"Reddit for our own\")));\n}\nexports.Header = Header;\n\n\n//# sourceURL=webpack://new-reddit/./src/shared/Header.jsx?");
+"use strict";
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Header = void 0;\nconst react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\nconst header_scss_1 = __importDefault(__webpack_require__(/*! ./header.scss */ \"./src/shared/header.scss\"));\nfunction Header() {\n    return (react_1.default.createElement(\"header\", null,\n        react_1.default.createElement(\"h1\", { className: header_scss_1.default.example }, \"Reddit for our own\")));\n}\nexports.Header = Header;\n\n\n//# sourceURL=webpack://react-reddit/./src/shared/Header.jsx?");
 
 /***/ }),
 
@@ -26,7 +36,8 @@ eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {
   \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"indexTemplate\": () => (/* binding */ indexTemplate)\n/* harmony export */ });\nconst indexTemplate = (content) => `\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Reddit</title>\n    <script src=\"/static/client.js\" type=\"application/javascript\"></script>\n  </head>\n  <body>\n    <div id=\"react_root\">${content}</div>\n  </body>\n</html>\n`;\n\n\n//# sourceURL=webpack://new-reddit/./src/server/indexTemplete.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"indexTemplate\": () => (/* binding */ indexTemplate)\n/* harmony export */ });\nconst indexTemplate = (content) => `\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Reddit</title>\n    <script src=\"/static/client.js\" type=\"application/javascript\"></script>\n  </head>\n  <body>\n    <div id=\"react_root\">${content}</div>\n  </body>\n</html>\n`;\n\n\n//# sourceURL=webpack://react-reddit/./src/server/indexTemplete.js?");
 
 /***/ }),
 
@@ -36,7 +47,8 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _shared_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/Header */ \"./src/shared/Header.jsx\");\n/* harmony import */ var _shared_Header__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_shared_Header__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _indexTemplete__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./indexTemplete */ \"./src/server/indexTemplete.js\");\n\n\n\n\n\nconst app = express__WEBPACK_IMPORTED_MODULE_0___default()();\n\napp.use('/static', express__WEBPACK_IMPORTED_MODULE_0___default()[\"static\"]('./dist/client'));\n\napp.get('/', (req, res) => {\n  res.send((0,_indexTemplete__WEBPACK_IMPORTED_MODULE_3__.indexTemplate)(react_dom_server__WEBPACK_IMPORTED_MODULE_1___default().renderToString((0,_shared_Header__WEBPACK_IMPORTED_MODULE_2__.Header)())));\n});\n\napp.listen(3000, () => {\n  console.log('Server started on http://localhost:3000');\n});\n\n\n//# sourceURL=webpack://new-reddit/./src/server/server.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _shared_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/Header */ \"./src/shared/Header.jsx\");\n/* harmony import */ var _shared_Header__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_shared_Header__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _indexTemplete__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./indexTemplete */ \"./src/server/indexTemplete.js\");\n\n\n\n\n\nconst app = express__WEBPACK_IMPORTED_MODULE_0___default()();\n\napp.use('/static', express__WEBPACK_IMPORTED_MODULE_0___default()[\"static\"]('./dist/client'));\n\napp.get('/', (req, res) => {\n  res.send((0,_indexTemplete__WEBPACK_IMPORTED_MODULE_3__.indexTemplate)(react_dom_server__WEBPACK_IMPORTED_MODULE_1___default().renderToString((0,_shared_Header__WEBPACK_IMPORTED_MODULE_2__.Header)())));\n});\n\napp.listen(3000, () => {\n  console.log('Server started on http://localhost:3000');\n});\n\n\n//# sourceURL=webpack://react-reddit/./src/server/server.js?");
 
 /***/ }),
 
@@ -46,6 +58,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var expr
   \**************************/
 /***/ ((module) => {
 
+"use strict";
 module.exports = require("express");
 
 /***/ }),
@@ -56,6 +69,7 @@ module.exports = require("express");
   \************************/
 /***/ ((module) => {
 
+"use strict";
 module.exports = require("react");
 
 /***/ }),
@@ -66,6 +80,7 @@ module.exports = require("react");
   \***********************************/
 /***/ ((module) => {
 
+"use strict";
 module.exports = require("react-dom/server");
 
 /***/ })
