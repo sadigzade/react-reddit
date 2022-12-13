@@ -1,4 +1,5 @@
 import React from 'react';
+import { CardsList } from '../CardsList';
 import styles from './content.scss';
 
 interface IContentProps {
@@ -6,5 +7,9 @@ interface IContentProps {
 }
 
 export function Content({ children }: IContentProps) {
-  return <main className={styles.content}>{children}</main>;
+  return (
+    <main className={styles.content}>
+      <CardsList />
+    </main>
+  );
 }

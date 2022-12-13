@@ -1,0 +1,18 @@
+.commentButton {
+  display: flex;
+  align-items: normal;
+
+  @media all and (min-width: 1024px) {
+    display: none;
+  }
+
+  & * {
+    color: var(--greyC4);
+  }
+
+  .commentNumber {
+    padding: 0 0 0 6px;
+    font-size: 12px;
+    line-height: 14px;
+  }
+}

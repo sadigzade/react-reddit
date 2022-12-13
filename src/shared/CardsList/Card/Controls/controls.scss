@@ -1,0 +1,25 @@
+.controls {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+
+  @media all and (min-width: 1024px) {
+    order: 3;
+    flex: 0 0;
+    margin: 0 0 0 24px;
+  }
+
+  .actions {
+    display: flex;
+    flex-flow: row nowrap;
+
+    @media all and (min-width: 1024px) {
+      display: none;
+    }
+
+    & > * + * {
+      margin: 0 0 0 13px;
+    }
+  }
+}
