@@ -1,6 +1,6 @@
 import express from 'express';
 import ReactDOM from 'react-dom/server';
-import App from '../App';
+import { App } from '../App';
 import { indexTemplate } from './indexTemplete';
 
 const app = express();

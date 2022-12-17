@@ -206,7 +206,7 @@ eval("// Exports\nmodule.exports = {\n\t\"layout\": \"layout__layout--ZBOll\"\n}
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\n__webpack_require__(/*! ./main.global.scss */ \"./src/main.global.scss\");\nconst Content_1 = __webpack_require__(/*! ./shared/Content */ \"./src/shared/Content/index.ts\");\nconst Header_1 = __webpack_require__(/*! ./shared/Header */ \"./src/shared/Header/index.ts\");\nconst Layout_1 = __webpack_require__(/*! ./shared/Layout */ \"./src/shared/Layout/index.ts\");\nfunction App() {\n    return (react_1.default.createElement(Layout_1.Layout, null,\n        react_1.default.createElement(Header_1.Header, null),\n        react_1.default.createElement(Content_1.Content, null, \"content\")));\n}\nexports[\"default\"] = App;\n\n\n//# sourceURL=webpack://react-reddit/./src/App.tsx?");
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.App = void 0;\nconst react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\nconst root_1 = __webpack_require__(/*! react-hot-loader/root */ \"react-hot-loader/root\");\n__webpack_require__(/*! ./main.global.scss */ \"./src/main.global.scss\");\nconst Content_1 = __webpack_require__(/*! ./shared/Content */ \"./src/shared/Content/index.ts\");\nconst Header_1 = __webpack_require__(/*! ./shared/Header */ \"./src/shared/Header/index.ts\");\nconst Layout_1 = __webpack_require__(/*! ./shared/Layout */ \"./src/shared/Layout/index.ts\");\nconst CardsList_1 = __webpack_require__(/*! ./shared/CardsList */ \"./src/shared/CardsList/index.ts\");\nfunction AppComponent() {\n    const [isVisible, setIsVisible] = react_1.default.useState(false);\n    const [title, setTitle] = react_1.default.useState('');\n    return (react_1.default.createElement(Layout_1.Layout, null,\n        react_1.default.createElement(Header_1.Header, null),\n        react_1.default.createElement(Content_1.Content, null,\n            react_1.default.createElement(CardsList_1.CardsList, null),\n            react_1.default.createElement(\"button\", { onClick: () => setIsVisible(!isVisible) }, \"Change me!\"))));\n}\nexports.App = (0, root_1.hot)(AppComponent);\n\n\n//# sourceURL=webpack://react-reddit/./src/App.tsx?");
 
 /***/ }),
 
@@ -349,7 +349,7 @@ eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Content = void 0;\nconst react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\nconst CardsList_1 = __webpack_require__(/*! ../CardsList */ \"./src/shared/CardsList/index.ts\");\nconst content_scss_1 = __importDefault(__webpack_require__(/*! ./content.scss */ \"./src/shared/Content/content.scss\"));\nfunction Content({ children }) {\n    return (react_1.default.createElement(\"main\", { className: content_scss_1.default.content },\n        react_1.default.createElement(CardsList_1.CardsList, null)));\n}\nexports.Content = Content;\n\n\n//# sourceURL=webpack://react-reddit/./src/shared/Content/Content.tsx?");
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Content = void 0;\nconst react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\nconst content_scss_1 = __importDefault(__webpack_require__(/*! ./content.scss */ \"./src/shared/Content/content.scss\"));\nfunction Content({ children }) {\n    return react_1.default.createElement(\"main\", { className: content_scss_1.default.content }, children);\n}\nexports.Content = Content;\n\n\n//# sourceURL=webpack://react-reddit/./src/shared/Content/Content.tsx?");
 
 /***/ }),
 
@@ -426,7 +426,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../App */ \"./src/App.tsx\");\n/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_App__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _indexTemplete__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./indexTemplete */ \"./src/server/indexTemplete.js\");\n\n\n\n\n\nconst app = express__WEBPACK_IMPORTED_MODULE_0___default()();\n\napp.use('/static', express__WEBPACK_IMPORTED_MODULE_0___default()[\"static\"]('./dist/client'));\n\napp.get('/', (req, res) => {\n  res.send((0,_indexTemplete__WEBPACK_IMPORTED_MODULE_3__.indexTemplate)(react_dom_server__WEBPACK_IMPORTED_MODULE_1___default().renderToString(_App__WEBPACK_IMPORTED_MODULE_2___default()())));\n});\n\napp.listen(3000, () => {\n  console.log('Server started on http://localhost:3000');\n});\n\n\n//# sourceURL=webpack://react-reddit/./src/server/server.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../App */ \"./src/App.tsx\");\n/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_App__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _indexTemplete__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./indexTemplete */ \"./src/server/indexTemplete.js\");\n\n\n\n\n\nconst app = express__WEBPACK_IMPORTED_MODULE_0___default()();\n\napp.use('/static', express__WEBPACK_IMPORTED_MODULE_0___default()[\"static\"]('./dist/client'));\n\napp.get('/', (req, res) => {\n  res.send((0,_indexTemplete__WEBPACK_IMPORTED_MODULE_3__.indexTemplate)(react_dom_server__WEBPACK_IMPORTED_MODULE_1___default().renderToString((0,_App__WEBPACK_IMPORTED_MODULE_2__.App)())));\n});\n\napp.listen(3000, () => {\n  console.log('Server started on http://localhost:3000');\n});\n\n\n//# sourceURL=webpack://react-reddit/./src/server/server.js?");
 
 /***/ }),
 
@@ -647,6 +647,17 @@ module.exports = require("react");
 
 "use strict";
 module.exports = require("react-dom/server");
+
+/***/ }),
+
+/***/ "react-hot-loader/root":
+/*!****************************************!*\
+  !*** external "react-hot-loader/root" ***!
+  \****************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("react-hot-loader/root");
 
 /***/ })
 
