@@ -19,8 +19,8 @@ const NOOP = () => {};
 export function GenericList({ list }: IGenericListProps) {
   return (
     <>
-      {list.map(({ As = 'div', text, onClick = NOOP, className, id, href }) => (
-        <As className={className} onClick={() => onClick(id)} key={id} href={href}>
+      {list.map(({ As = 'div', text, onClick = NOOP, className = 'dropdownItem', id, href }) => (
+        <As className={styles[className]} onClick={() => onClick(id)} key={id} href={href}>
           {text}
         </As>
       ))}

@@ -33,7 +33,7 @@ function AppComponent() {
       <Header />
       <Content>
         <CardsList />
-        <div style={{ padding: 20 }}>
+        {/* <div style={{ padding: 20 }}>
           <br />
           <Dropdown
             onOpen={() => console.log('opened')}
@@ -42,11 +42,8 @@ function AppComponent() {
             button={<button>Test</button>}>
             <CardsList />
           </Dropdown>
-        </div>
-        <button onClick={handleAdd}>Add Element</button>
-        <ul>
-          <GenericList list={list.map(merge({ onClick: handleItemClick }))} />
-        </ul>
+        </div> */}
+        {/* <GenericList list={list.map(merge({ onClick: handleItemClick }))} /> */}
       </Content>
     </Layout>
   );
