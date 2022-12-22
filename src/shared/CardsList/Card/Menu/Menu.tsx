@@ -3,7 +3,7 @@ import styles from './menu.scss';
 import { Dropdown } from '../../../Dropdown';
 import { MenuItemsList } from './MenuItemsList';
 import { EColors, Text } from '../../../Text';
-import { Icon, EIcons } from '../../../Icon';
+import { EIcons, Icon } from '../../../Icon';
 
 export function Menu() {
   const handleClickMenu = (id: string) => {

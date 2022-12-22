@@ -1,8 +1,52 @@
 import React from 'react';
 import styles from './menuitemslist.scss';
-import classNames from 'classnames';
 import { EColors, Text } from '../../../../Text';
-import { Icon, EIcons } from '../../../../Icon';
+import { EIcons, Icon } from '../../../../Icon';
+import { GenericList } from '../../../../GenericList';
+import { generateId } from '../../../../../utils/react/generateRandomIndex';
+
+const MENU_ITEMS_LIST = [
+  {
+    As: 'li' as const,
+    className: 'menuItem',
+    icon: <Icon name={EIcons.comments} size={14} />,
+    text: 'Комментарии',
+    afterDivider: true,
+    mobileDisplay: false,
+  },
+  {
+    As: 'li' as const,
+    className: 'menuItem',
+    icon: <Icon name={EIcons.share} size={14} />,
+    text: 'Поделиться',
+    afterDivider: true,
+    mobileDisplay: false,
+  },
+  {
+    As: 'li' as const,
+    className: 'menuItem',
+    icon: <Icon name={EIcons.block} size={14} />,
+    text: 'Скрыть',
+    afterDivider: true,
+    mobileDisplay: true,
+  },
+  {
+    As: 'li' as const,
+    className: 'menuItem',
+    icon: <Icon name={EIcons.save} size={14} />,
+    text: 'Сохранить',
+    afterDivider: true,
+    mobileDisplay: false,
+  },
+  {
+    As: 'li' as const,
+    className: 'menuItem',
+    icon: <Icon name={EIcons.warning} size={14} />,
+    text: 'Пожаловаться',
+    afterDivider: false,
+    mobileDisplay: true,
+  },
+].map(generateId);
 
 interface IMenuItemsListProps {
   postId: string;
@@ -11,48 +55,19 @@ interface IMenuItemsListProps {
 export function MenuItemsList({ postId }: IMenuItemsListProps) {
   return (
     <ul className={styles.menuItemsList}>
-      <li className={classNames(styles.menuItem, styles.hide)}>
-        <Icon name={EIcons.comments} size={14} />
-        <Text mobileSize={12} size={14} color={EColors.grey99}>
-          Комментарии
-        </Text>
-      </li>
-
-      <div className={classNames(styles.divider, styles.hide)} />
-
-      <li className={classNames(styles.menuItem, styles.hide)}>
-        <Icon name={EIcons.share} size={14} />
-        <Text mobileSize={12} size={14} color={EColors.grey99}>
-          Поделиться
-        </Text>
-      </li>
-
-      <div className={classNames(styles.divider, styles.hide)} />
-
-      <li className={styles.menuItem}>
-        <Icon name={EIcons.block} size={14} />
-        <Text mobileSize={12} size={14} color={EColors.grey99}>
-          Скрыть
-        </Text>
-      </li>
-
-      <div className={styles.divider} />
-
-      <li className={classNames(styles.menuItem, styles.hide)}>
-        <Icon name={EIcons.save} size={14} />
-        <Text mobileSize={12} size={14} color={EColors.grey99}>
-          Сохранить
-        </Text>
-      </li>
-
-      <div className={classNames(styles.divider, styles.hide)} />
-
-      <li className={styles.menuItem}>
-        <Icon name={EIcons.warning} size={16} />
-        <Text mobileSize={12} size={14} color={EColors.grey99}>
-          Пожаловаться
-        </Text>
-      </li>
+      <GenericList
+        list={MENU_ITEMS_LIST.map((item) => ({
+          ...item,
+          element: (
+            <>
+              {item.icon}
+              <Text mobileSize={12} size={14} color={EColors.grey99}>
+                {item.text}
+              </Text>
+            </>
+          ),
+        }))}
+      />
     </ul>
   );
 }
