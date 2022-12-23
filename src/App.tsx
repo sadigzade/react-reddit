@@ -6,17 +6,21 @@ import { Layout } from './shared/Layout';
 import { CardsList } from './shared/CardsList';
 import { useToken } from './hooks/useToken';
 import './main.global.scss';
+import { tokenContext } from './shared/context/tokenContext';
 
 function AppComponent() {
   const [token] = useToken();
+  const { Provider } = tokenContext;
 
   return (
-    <Layout>
-      <Header token={token} />
-      <Content>
-        <CardsList />
-      </Content>
-    </Layout>
+    <Provider value={token}>
+      <Layout>
+        <Header />
+        <Content>
+          <CardsList />
+        </Content>
+      </Layout>
+    </Provider>
   );
 }
 
