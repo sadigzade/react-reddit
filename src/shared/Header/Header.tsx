@@ -4,10 +4,14 @@ import { SearchBlock } from './SearchBlock';
 import { SortBlock } from './SortBlock';
 import { ThreadTitle } from './ThreadTitle';
 
-export function Header() {
+interface IHeaderProps {
+  token: string;
+}
+
+export function Header({ token }: IHeaderProps) {
   return (
     <header className={styles.header}>
-      <SearchBlock />
+      <SearchBlock token={token} />
       <ThreadTitle />
       <SortBlock />
     </header>
