@@ -18,9 +18,9 @@ export function useUserData() {
           headers: { Authorization: `bearer ${token}` },
         })
         .then((res) => {
-          const { name, icon_img } = res.data;
+          const { icon_img, name } = res.data;
           setData({
-            name: name,
+            name,
             iconImg: icon_img.split('?')[0],
           });
         })
