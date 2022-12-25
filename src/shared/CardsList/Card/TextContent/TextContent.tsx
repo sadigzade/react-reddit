@@ -9,7 +9,6 @@ interface ITextContentProps {
     title?: string;
     author?: string;
     created?: number;
-    url?: string;
     sr_detail?: {
       icon_img?: string;
     };
@@ -26,7 +25,7 @@ export function TextContent({ data }: ITextContentProps) {
           {calcMoment(data?.created)}
         </span>
       </div>
-      <Title title={data?.title} url={data?.url} />
+      <Title title={data?.title} />
     </div>
   );
 }

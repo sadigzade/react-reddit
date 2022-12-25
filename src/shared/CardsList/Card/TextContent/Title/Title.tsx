@@ -1,17 +1,20 @@
 import React from 'react';
 import styles from './title.scss';
+import { Post } from '../../../../Post';
 
 interface ITitleProps {
   title?: string;
-  url?: string;
 }
 
-export function Title({ title, url }: ITitleProps) {
+export function Title({ title }: ITitleProps) {
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+
   return (
     <h2 className={styles.title}>
-      <a href={url} className={styles.postLink} target="_blank">
+      <a href="#post-url" className={styles.postLink} onClick={() => setIsModalOpen(!isModalOpen)}>
         {title}
       </a>
+      {isModalOpen && <Post />}
     </h2>
   );
 }

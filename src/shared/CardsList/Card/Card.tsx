@@ -13,7 +13,6 @@ interface ICardProps {
     score?: number;
     num_comments?: number;
     created?: number;
-    url?: string;
     sr_detail?: {
       icon_img?: string;
     };
