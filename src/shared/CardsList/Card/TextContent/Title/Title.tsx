@@ -14,7 +14,7 @@ export function Title({ title }: ITitleProps) {
       <a href="#post-url" className={styles.postLink} onClick={() => setIsModalOpen(!isModalOpen)}>
         {title}
       </a>
-      {isModalOpen && <Post />}
+      {isModalOpen && <Post onClose={() => setIsModalOpen(false)} />}
     </h2>
   );
 }
