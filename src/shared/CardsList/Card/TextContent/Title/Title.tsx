@@ -1,12 +1,16 @@
 import React from 'react';
 import styles from './title.scss';
 
-export function Title() {
+interface ITitleProps {
+  title?: string;
+  url?: string;
+}
+
+export function Title({ title, url }: ITitleProps) {
   return (
     <h2 className={styles.title}>
-      <a href="#post-url" className={styles.postLink}>
-        Следует отметить, что новая модель организационной деятельности Следует отметить, что новая
-        модель организационной деятельности
+      <a href={url} className={styles.postLink} target="_blank">
+        {title}
       </a>
     </h2>
   );

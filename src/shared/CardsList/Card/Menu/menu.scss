@@ -3,7 +3,6 @@
   top: 17px;
   right: 15px;
   padding: 0;
-  z-index: 100;
 
   @media all and (min-width: 1024px) {
     position: relative;
@@ -49,6 +48,7 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   border-radius: 3px;
   background-color: var(--white);
+  z-index: 100;
 }
 
 .closeButton {

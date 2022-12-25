@@ -19,6 +19,7 @@ export function useUserData() {
         })
         .then((res) => {
           const { icon_img, name } = res.data;
+
           setData({
             name,
             iconImg: icon_img.split('?')[0],

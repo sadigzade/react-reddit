@@ -1,6 +1,6 @@
 .textContent {
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: column;
 
   @media all and (min-width: 1024px) {
     flex-basis: 540px;

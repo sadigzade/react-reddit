@@ -2,17 +2,31 @@ import React from 'react';
 import styles from './textcontent.scss';
 import { Title } from './Title';
 import { UserLink } from './UserLink';
+import { calcMoment } from '../../../../utils/js/calcMoment';
 
-export function TextContent() {
+interface ITextContentProps {
+  data?: {
+    title?: string;
+    author?: string;
+    created?: number;
+    url?: string;
+    sr_detail?: {
+      icon_img?: string;
+    };
+  };
+}
+
+export function TextContent({ data }: ITextContentProps) {
   return (
     <div className={styles.textContent}>
       <div className={styles.metaData}>
-        <UserLink />
+        <UserLink avatar={data?.sr_detail?.icon_img} author={data?.author} />
         <span className={styles.createdAt}>
-          <span className={styles.publishedLabel}>опубликовано </span>4 часа назад
+          <span className={styles.publishedLabel}>опубликовано </span>
+          {calcMoment(data?.created)}
         </span>
       </div>
-      <Title />
+      <Title title={data?.title} url={data?.url} />
     </div>
   );
 }

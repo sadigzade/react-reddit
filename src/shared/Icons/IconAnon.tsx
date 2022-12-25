@@ -6,7 +6,7 @@ export function IconAnon({ size }: IIconTemplateProps) {
     <svg
       width={size}
       height={size}
-      viewBox={`0 0 ${size} ${size}`}
+      viewBox={`0 0 50 50`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg">
       <path
