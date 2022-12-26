@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from './post.scss';
+import { CommentForm } from '../CommentForm';
 
 interface IPostProps {
   onClose?: () => void;
@@ -44,6 +45,8 @@ export function Post({ onClose }: IPostProps) {
           neque, veniam odit dolore nulla quaerat nam itaque vitae!
         </p>
       </div>
+
+      <CommentForm />
     </div>,
     node,
   );
