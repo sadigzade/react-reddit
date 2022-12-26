@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from './Card';
 import styles from './cardslist.scss';
-import { postsContext } from '../context/PostsContext';
+import { postsContext } from '../context/postsContext';
 
 export function CardsList() {
   const posts = React.useContext(postsContext);

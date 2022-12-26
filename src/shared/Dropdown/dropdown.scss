@@ -1,16 +1,13 @@
 .container {
   width: 100%;
   flex: 1 1 0%;
+}
 
-  .listContainer {
-    position: relative;
+.listContainer {
+  position: fixed;
+  width: 100%;
+}
 
-    .list {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-    }
-  }
+.list {
+  position: absolute;
 }

@@ -6,10 +6,6 @@ import { EColors, Text } from '../../../Text';
 import { EIcons, Icon } from '../../../Icon';
 
 export function Menu() {
-  const handleClickMenu = (id: string) => {
-    console.log(id);
-  };
-
   return (
     <div className={styles.menu}>
       <Dropdown

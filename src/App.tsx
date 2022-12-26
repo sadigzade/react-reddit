@@ -8,7 +8,7 @@ import { useToken } from './hooks/useToken';
 import './main.global.scss';
 import { tokenContext } from './shared/context/tokenContext';
 import { UserContextProvider } from './shared/context/userContext';
-import { PostsContextProvider } from './shared/context/PostsContext';
+import { PostsContextProvider } from './shared/context/postsContext';
 import { commentContext } from './shared/context/commentContex';
 
 function AppComponent() {
