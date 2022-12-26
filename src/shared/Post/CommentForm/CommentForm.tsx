@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FormEvent } from 'react';
 import styles from './commentform.scss';
-import { commentContext } from '../context/commentContex';
+import { commentContext } from '../../context/commentContex';
 
 export function CommentForm() {
   const { value, onChange } = React.useContext(commentContext);

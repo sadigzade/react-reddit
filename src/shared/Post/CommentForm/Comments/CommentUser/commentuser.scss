@@ -1,0 +1,18 @@
+.commentUser {
+  display: flex;
+  align-items: center;
+}
+
+.username {
+  margin-left: 7px;
+
+  &:hover span {
+    @media all and (min-width: 1540px) {
+      text-decoration: underline;
+    }
+  }
+}
+
+.createdAt {
+  margin-left: 5px;
+}

@@ -36,3 +36,30 @@
     display: none;
   }
 }
+
+.commentControl {
+  display: flex;
+  align-items: center;
+  margin-right: 27px;
+  cursor: pointer;
+
+  &:hover {
+    svg {
+      path {
+        fill: var(--orange);
+      }
+    }
+
+    span {
+      color: var(--orange);
+    }
+  }
+
+  & > svg + span {
+    margin-left: 7px;
+  }
+
+  & > svg + span {
+    margin-left: 7px;
+  }
+}

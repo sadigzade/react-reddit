@@ -32,8 +32,8 @@ export function GenericList({ list }: IGenericListProps) {
           className = 'dropdownItem',
           id,
           href,
-          afterDivider,
-          mobileDisplay,
+          afterDivider = false,
+          mobileDisplay = true,
         }) => (
           <As onClick={() => onClick(id)} key={id} href={href}>
             <div className={classNames(styles[className], !mobileDisplay && styles.hide)}>

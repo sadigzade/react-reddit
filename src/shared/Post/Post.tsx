@@ -1,7 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from './post.scss';
-import { CommentForm } from '../CommentForm';
+import { CommentForm } from './CommentForm';
+import { Comments } from './CommentForm/Comments';
+
+const USERS_COMMENTS = [
+  {
+    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, provident.',
+    otherComments: {
+      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, provident.',
+      otherComments: {},
+    },
+  },
+];
 
 interface IPostProps {
   onClose?: () => void;
@@ -47,6 +58,7 @@ export function Post({ onClose }: IPostProps) {
       </div>
 
       <CommentForm />
+      <Comments comments={USERS_COMMENTS} />
     </div>,
     node,
   );
