@@ -1,0 +1,38 @@
+.menuItem {
+  padding: 12px 0;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  @media all and (min-width: 1024px) {
+    padding: 6px 0;
+  }
+
+  &:hover {
+    svg {
+      path {
+        fill: var(--orange);
+      }
+    }
+
+    span {
+      color: var(--orange);
+    }
+  }
+
+  & > svg + span {
+    margin-left: 7px;
+  }
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: var(--greyEC);
+}
+
+.hide {
+  @media all and (min-width: 320px) and (max-width: 1023px) {
+    display: none;
+  }
+}

@@ -1,0 +1,7 @@
+.menuItemsList {
+  padding: 0 20px;
+
+  @media all and (min-width: 1024px) {
+    padding: 6px 20px;
+  }
+}
