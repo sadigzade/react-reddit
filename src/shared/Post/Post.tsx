@@ -2,24 +2,33 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from './post.scss';
 import { CommentForm } from './CommentForm';
-import { Comments } from './CommentForm/Comments';
-
-const USERS_COMMENTS = [
-  {
-    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, provident.',
-    otherComments: {
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, provident.',
-      otherComments: {},
-    },
-  },
-];
+import { Comments } from './Comments';
+import axios from 'axios';
+import { tokenContext } from '../context/tokenContext';
+import { useComments } from '../../hooks/useComments';
 
 interface IPostProps {
+  postId?: string;
+  subreddit?: string;
   onClose?: () => void;
 }
 
-export function Post({ onClose }: IPostProps) {
+interface ICommentsData {
+  kind?: string;
+  data?: {
+    author?: string;
+    body?: string;
+    replies?: {
+      data?: {
+        children?: ICommentsData[];
+      };
+    };
+  };
+}
+
+export function Post({ postId = '', subreddit = '', onClose }: IPostProps) {
   const ref = React.useRef<HTMLDivElement>(null);
+  const [comments] = useComments(subreddit, postId);
 
   React.useEffect(() => {
     function handleClick(event: MouseEvent) {
@@ -58,7 +67,7 @@ export function Post({ onClose }: IPostProps) {
       </div>
 
       <CommentForm />
-      <Comments comments={USERS_COMMENTS} />
+      <Comments comments={comments} />
     </div>,
     node,
   );

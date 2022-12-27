@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './commentcontrols.scss';
-import { GenericList } from '../../../../GenericList';
-import { EColors, Text } from '../../../../Text';
-import { generateId } from '../../../../../utils/react/generateRandomIndex';
-import { Icon, EIcons } from '../../../../Icon';
+import { GenericList } from '../../../GenericList';
+import { EColors, Text } from '../../../Text';
+import { generateId } from '../../../../utils/react/generateRandomIndex';
+import { Icon, EIcons } from '../../../Icon';
 
 const MENU_ITEMS_LIST = [
   {

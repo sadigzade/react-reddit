@@ -9,3 +9,9 @@ export const commentContext = React.createContext<CommentContextType>({
   value: '',
   onChange: () => {},
 });
+
+interface ICommentContextProviderProps {
+  children: React.ReactNode;
+}
+
+export function CommentContextProvider({ children }: ICommentContextProviderProps) {}

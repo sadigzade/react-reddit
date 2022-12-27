@@ -9,6 +9,7 @@ export interface IPostsContextData {
     author?: string;
     thumbnail?: string;
     score?: number;
+    subreddit?: string;
     num_comments?: number;
     created?: number;
     sr_detail?: {

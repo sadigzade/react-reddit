@@ -6,8 +6,10 @@ import { calcMoment } from '../../../../utils/js/calcMoment';
 
 interface ITextContentProps {
   data?: {
+    id?: string;
     title?: string;
     author?: string;
+    subreddit?: string;
     created?: number;
     sr_detail?: {
       icon_img?: string;
@@ -25,7 +27,7 @@ export function TextContent({ data }: ITextContentProps) {
           {calcMoment(data?.created)}
         </span>
       </div>
-      <Title title={data?.title} />
+      <Title postId={data?.id} subreddit={data?.subreddit} title={data?.title} />
     </div>
   );
 }
