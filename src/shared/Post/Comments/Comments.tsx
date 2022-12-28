@@ -1,11 +1,9 @@
 import React from 'react';
 import styles from './comments.scss';
-import { CommentUser } from './CommentUser';
-import { CommentControls } from './CommentControls';
 import { CommentLeftSide } from './CommentLeftSide';
+import { CommentContent } from './CommentContent';
 
 interface IComment {
-  kind?: string;
   data?: {
     author?: string;
     body?: string;
@@ -25,19 +23,14 @@ export function Comments({ comments }: ICommentsProps) {
   return (
     <ul>
       {comments &&
-        comments.map(({ kind, data }) => {
+        comments.map(({ data }) => {
           const otherComments = data?.replies?.data?.children;
-          console.log(comments);
 
           return (
             <li className={styles.commentContainer}>
               <CommentLeftSide />
               <div className={styles.commentContentContainer}>
-                <div className={styles.commentContent}>
-                  <CommentUser author={data?.author} />
-                  <p>{data?.body}</p>
-                  <CommentControls />
-                </div>
+                <CommentContent author={data?.author} body={data?.body} />
                 {otherComments && otherComments.length ? (
                   <Comments comments={otherComments} />
                 ) : null}

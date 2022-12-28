@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import styles from './post.scss';
 import { CommentForm } from './CommentForm';
 import { Comments } from './Comments';
-import axios from 'axios';
-import { tokenContext } from '../context/tokenContext';
 import { useComments } from '../../hooks/useComments';
 
 interface IPostProps {
@@ -14,7 +12,6 @@ interface IPostProps {
 }
 
 interface ICommentsData {
-  kind?: string;
   data?: {
     author?: string;
     body?: string;

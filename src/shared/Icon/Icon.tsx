@@ -8,6 +8,7 @@ import {
   SaveIcon,
   ShareIcon,
   WarningIcon,
+  SendIcon,
 } from '../Icons';
 
 export enum EIcons {
@@ -18,6 +19,7 @@ export enum EIcons {
   warning = 'warning',
   menu = 'menu',
   anon = 'anon',
+  send = 'send',
 }
 
 export type TIconSize = 14 | 16 | 19 | 20 | 30 | 50;
@@ -36,6 +38,7 @@ export function Icon({ name, size }: IIconProps) {
     [EIcons.warning]: <WarningIcon size={size} />,
     [EIcons.menu]: <MenuIcon size={size} />,
     [EIcons.anon]: <IconAnon size={size} />,
+    [EIcons.send]: <SendIcon size={size} />,
   };
 
   return icons[name];

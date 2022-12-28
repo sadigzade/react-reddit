@@ -11,17 +11,6 @@
 }
 
 .commentContentContainer {
-  margin-left: 22px;
-}
-
-.commentContent {
   flex: 1;
-
-  &:nth-child(n) {
-    margin-bottom: 30px;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
+  margin-left: 22px;
 }

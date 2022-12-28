@@ -5,7 +5,7 @@ import styles from './genericlist.scss';
 interface IItem {
   id: string;
   element: React.ReactNode;
-  onClick?: (id: string) => void;
+  onChange?: (visible: boolean) => void;
   className?: string;
   As?: 'a' | 'li' | 'button' | 'div';
   href?: string;
@@ -28,14 +28,14 @@ export function GenericList({ list }: IGenericListProps) {
         ({
           As = 'div',
           element,
-          onClick = NOOP,
+          onChange = NOOP,
           className = 'dropdownItem',
           id,
           href,
           afterDivider = false,
           mobileDisplay = true,
         }) => (
-          <As onClick={() => onClick(id)} key={id} href={href}>
+          <As onClick={() => onChange(true)} key={id} href={href}>
             <div className={classNames(styles[className], !mobileDisplay && styles.hide)}>
               {element}
             </div>

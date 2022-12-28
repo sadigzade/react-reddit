@@ -1,0 +1,32 @@
+.answerForm {
+  display: flex;
+  margin-top: 15px;
+}
+
+.answerInput {
+  height: 80px;
+  width: 100%;
+  border: 1px solid #d9d9d9;
+  padding: 16px;
+  box-sizing: border-box;
+  border-radius: 3px 3px 0px 0px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #999999;
+  resize: none;
+}
+
+.answerButton {
+  margin-left: 15px;
+
+  svg {
+    &:hover {
+      path {
+        fill: var(--orange);
+      }
+    }
+  }
+}

@@ -3,7 +3,6 @@ import { tokenContext } from '../shared/context/tokenContext';
 import axios from 'axios';
 
 interface ICommentsData {
-  kind?: string;
   data?: {
     author?: string;
     body?: string;

@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './commentcontrols.scss';
-import { GenericList } from '../../../GenericList';
-import { EColors, Text } from '../../../Text';
-import { generateId } from '../../../../utils/react/generateRandomIndex';
-import { Icon, EIcons } from '../../../Icon';
+import { generateId } from '../../../../../utils/react/generateRandomIndex';
+import { GenericList } from '../../../../GenericList';
+import { Icon, EIcons } from '../../../../Icon';
+import { EColors, Text } from '../../../../Text';
 
 const MENU_ITEMS_LIST = [
   {
@@ -32,9 +32,11 @@ const MENU_ITEMS_LIST = [
   },
 ].map(generateId);
 
-interface ICommentControlsProps {}
+interface ICommentControlsProps {
+  onChange: (visible: boolean) => void;
+}
 
-export function CommentControls({}: ICommentControlsProps) {
+export function CommentControls({ onChange }: ICommentControlsProps) {
   return (
     <ul className={styles.commentControls}>
       <GenericList
@@ -48,6 +50,7 @@ export function CommentControls({}: ICommentControlsProps) {
               </Text>
             </>
           ),
+          onChange,
         }))}
       />
     </ul>

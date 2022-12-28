@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './commentuser.scss';
-import { Break } from '../../../Break';
-import { Icon, EIcons } from '../../../Icon';
-import { EColors, Text } from '../../../Text';
+import { Break } from '../../../../Break';
+import { Icon, EIcons } from '../../../../Icon';
+import { EColors, Text } from '../../../../Text';
 
 interface ICommentUserProps {
   author?: string;
