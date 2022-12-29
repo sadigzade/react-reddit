@@ -1,24 +1,26 @@
 import React from 'react';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import { hot } from 'react-hot-loader/root';
 import { Content } from './shared/Content';
 import { Header } from './shared/Header';
 import { Layout } from './shared/Layout';
 import { CardsList } from './shared/CardsList';
 import { useToken } from './hooks/useToken';
-import './main.global.scss';
 import { tokenContext } from './shared/context/tokenContext';
 import { UserContextProvider } from './shared/context/userContext';
 import { PostsContextProvider } from './shared/context/postsContext';
-import { commentContext } from './shared/context/commentContex';
+import { devToolsEnhancer } from '@redux-devtools/extension';
+import { rootReducer } from './store';
+import './main.global.scss';
+
+const store = createStore(rootReducer, devToolsEnhancer());
 
 function AppComponent() {
-  const [commentValue, setCommentValue] = React.useState('');
   const [token] = useToken();
 
-  const CommentProvider = commentContext.Provider;
-
   return (
-    <CommentProvider value={{ value: commentValue, onChange: setCommentValue }}>
+    <Provider store={store}>
       <tokenContext.Provider value={token}>
         <UserContextProvider>
           <PostsContextProvider>
@@ -31,8 +33,11 @@ function AppComponent() {
           </PostsContextProvider>
         </UserContextProvider>
       </tokenContext.Provider>
-    </CommentProvider>
+    </Provider>
   );
 }
 
 export const App = hot(() => <AppComponent />);
+function composeWithDevTools(): import('redux').StoreEnhancer<unknown, unknown> | undefined {
+  throw new Error('Function not implemented.');
+}
