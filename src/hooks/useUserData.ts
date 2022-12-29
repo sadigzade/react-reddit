@@ -1,6 +1,7 @@
-import React from 'react';
-import axios from 'axios';
-import { tokenContext } from '../shared/context/tokenContext';
+import React from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 interface IUserData {
   name?: string;
@@ -9,12 +10,12 @@ interface IUserData {
 
 export function useUserData() {
   const [data, setData] = React.useState<IUserData>({});
-  const token = React.useContext(tokenContext);
+  const token = useSelector<RootState, string>((state) => state.token);
 
   React.useEffect(() => {
-    if (token && token.length > 0 && token !== 'undefined') {
+    if (token && token.length > 0 && token !== "undefined") {
       axios
-        .get('https://oauth.reddit.com/api/v1/me?raw__json=1', {
+        .get("https://oauth.reddit.com/api/v1/me?raw__json=1", {
           headers: { Authorization: `bearer ${token}` },
         })
         .then((res) => {
@@ -22,7 +23,7 @@ export function useUserData() {
 
           setData({
             name,
-            iconImg: icon_img.split('?')[0],
+            iconImg: icon_img.split("?")[0],
           });
         })
         .catch(console.log);

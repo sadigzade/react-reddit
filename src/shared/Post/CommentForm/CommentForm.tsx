@@ -1,7 +1,7 @@
-import React, { ChangeEvent, FormEvent } from 'react';
-import styles from './commentform.scss';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState, updateComment } from '../../../store';
+import React, { ChangeEvent, FormEvent } from "react";
+import styles from "./commentform.scss";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState, updateComment } from "../../../store";
 
 export function CommentForm() {
   const value = useSelector<RootState, string>((state) => state.commentText);
