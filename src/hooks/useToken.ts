@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setToken } from "../store";
+import { setToken } from "../store/reducer";
 
 export function useToken() {
   const dispatch = useDispatch();
