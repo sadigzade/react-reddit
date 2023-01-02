@@ -1,6 +1,8 @@
 .form {
   display: flex;
   flex-direction: column;
+  position: relative;
+  margin-bottom: 30px;
 }
 
 .input {
@@ -40,4 +42,11 @@
 .button:disabled {
   opacity: 0.5;
   cursor: default;
+}
+
+.validateMessage {
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  color: red;
 }
