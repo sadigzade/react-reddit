@@ -23,7 +23,6 @@ export function Menu() {
     function updateCoords() {
       if (ref.current !== null) {
         const targetCoords = ref.current.getBoundingClientRect();
-        console.log(targetCoords);
 
         setCoords({
           top: targetCoords.top + 41,

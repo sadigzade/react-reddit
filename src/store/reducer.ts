@@ -8,22 +8,16 @@ import {
   MeRequestSuccessAction,
 } from "./me/actions";
 import { MeState, meReducer } from "./me/reducer";
-
-export type RootState = {
-  commentText: string;
-  token: string;
-  me: MeState;
-};
-
-const initialState: RootState = {
-  commentText: "",
-  token: "",
-  me: {
-    loading: false,
-    error: "",
-    data: {},
-  },
-};
+import { tokenReducer } from "./token/reducer";
+import {
+  POSTS_REQUEST,
+  POSTS_REQUEST_ERROR,
+  POSTS_REQUEST_SUCCESS,
+  PostsRequestAction,
+  PostsRequestErrorAction,
+  PostsRequestSuccessAction,
+} from "./posts/actions";
+import { PostsState, postsReducer } from "./posts/reducer";
 
 const UPDATE_COMMENT = "UPDATE_COMMENT";
 type UpdateCommentAction = {
@@ -37,8 +31,8 @@ export const updateComment: ActionCreator<UpdateCommentAction> = (text) => {
   };
 };
 
-const SET_TOKEN = "SET_TOKEN";
-type SetTokenAction = {
+export const SET_TOKEN = "SET_TOKEN";
+export type SetTokenAction = {
   type: typeof SET_TOKEN;
   token: string;
 };
@@ -49,13 +43,39 @@ export const setToken: ActionCreator<SetTokenAction> = (token) => {
   };
 };
 
-type MyAction =
+export type RootState = {
+  commentText: string;
+  token: string;
+  me: MeState;
+  posts: PostsState;
+};
+
+const initialState: RootState = {
+  commentText: "",
+  token: "",
+  me: {
+    loading: false,
+    error: "",
+    data: {},
+  },
+  posts: {
+    loading: false,
+    error: "",
+    data: {},
+  },
+};
+
+type RootActions =
   | UpdateCommentAction
   | SetTokenAction
   | MeRequestAction
   | MeRequestSuccessAction
-  | MeRequestErrorAction;
-export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, action) => {
+  | MeRequestErrorAction
+  | PostsRequestAction
+  | PostsRequestSuccessAction
+  | PostsRequestErrorAction;
+
+export const rootReducer: Reducer<RootState, RootActions> = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_COMMENT:
       return {
@@ -73,6 +93,13 @@ export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, 
       return {
         ...state,
         me: meReducer(state.me, action),
+      };
+    case POSTS_REQUEST:
+    case POSTS_REQUEST_SUCCESS:
+    case POSTS_REQUEST_ERROR:
+      return {
+        ...state,
+        posts: postsReducer(state.posts, action),
       };
     default:
       return state;

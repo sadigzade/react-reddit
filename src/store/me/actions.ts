@@ -3,6 +3,11 @@ import { ThunkAction } from "redux-thunk";
 import axios from "axios";
 import { RootState } from "../reducer";
 
+export interface IUserData {
+  name?: string;
+  iconImg?: string;
+}
+
 export const ME_REQUEST = "ME_REQUEST";
 export type MeRequestAction = {
   type: typeof ME_REQUEST;
@@ -13,10 +18,6 @@ export const meRequest: ActionCreator<MeRequestAction> = () => {
   };
 };
 
-export interface IUserData {
-  name?: string;
-  iconImg?: string;
-}
 export const ME_REQUEST_SUCCESS = "ME_REQUEST_SUCCESS";
 export type MeRequestSuccessAction = {
   type: typeof ME_REQUEST_SUCCESS;

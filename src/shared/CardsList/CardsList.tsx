@@ -1,16 +1,14 @@
-import React from 'react';
-import { Card } from './Card';
-import styles from './cardslist.scss';
-import { postsContext } from '../context/postsContext';
+import React from "react";
+import { Card } from "./Card";
+import styles from "./cardslist.scss";
+import { usePostsData } from "../../hooks/usePostsData";
 
 export function CardsList() {
-  const posts = React.useContext(postsContext);
+  const [data] = usePostsData();
 
   return (
     <ul className={styles.cardsList}>
-      {posts.map((post) => (
-        <Card key={post.data?.id} data={post.data} />
-      ))}
+      {data instanceof Array && data.map((post) => <Card key={post.data.id} data={post.data} />)}
     </ul>
   );
 }

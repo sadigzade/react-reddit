@@ -1,4 +1,4 @@
-export const indexHMTLTemplete = (content, token) => `
+export const indexHTMLTemplete = (content, token) => `
 <!DOCTYPE html>
 <html lang="en">
   <head>
