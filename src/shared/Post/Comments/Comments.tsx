@@ -1,25 +1,16 @@
-import React from 'react';
-import styles from './comments.scss';
-import { CommentLeftSide } from './CommentLeftSide';
-import { CommentContent } from './CommentContent';
-
-interface IComment {
-  data?: {
-    author?: string;
-    body?: string;
-    replies?: {
-      data?: {
-        children?: IComment[];
-      };
-    };
-  };
-}
+import React from "react";
+import styles from "./comments.scss";
+import { CommentLeftSide } from "./CommentLeftSide";
+import { CommentContent } from "./CommentContent";
+import { ICommentsData } from "../../../store/comments/actions";
 
 interface ICommentsProps {
-  comments?: IComment[];
+  comments?: ICommentsData[];
 }
 
 export function Comments({ comments }: ICommentsProps) {
+  console.log(comments);
+
   return (
     <ul>
       {comments &&

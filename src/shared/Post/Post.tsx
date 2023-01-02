@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import styles from './post.scss';
-import { CommentForm } from './CommentForm';
-import { Comments } from './Comments';
-import { useComments } from '../../hooks/useComments';
+import React from "react";
+import ReactDOM from "react-dom";
+import styles from "./post.scss";
+import { CommentForm } from "./CommentForm";
+import { Comments } from "./Comments";
+import { useComments } from "../../hooks/useComments";
 
 interface IPostProps {
   postId?: string;
@@ -11,21 +11,9 @@ interface IPostProps {
   onClose?: () => void;
 }
 
-interface ICommentsData {
-  data?: {
-    author?: string;
-    body?: string;
-    replies?: {
-      data?: {
-        children?: ICommentsData[];
-      };
-    };
-  };
-}
-
-export function Post({ postId = '', subreddit = '', onClose }: IPostProps) {
+export function Post({ postId = "", subreddit = "", onClose }: IPostProps) {
   const ref = React.useRef<HTMLDivElement>(null);
-  const [comments] = useComments(subreddit, postId);
+  const [data] = useComments(subreddit, postId);
 
   React.useEffect(() => {
     function handleClick(event: MouseEvent) {
@@ -34,14 +22,14 @@ export function Post({ postId = '', subreddit = '', onClose }: IPostProps) {
       }
     }
 
-    document.addEventListener('click', handleClick);
+    document.addEventListener("click", handleClick);
 
     return () => {
-      document.removeEventListener('click', handleClick);
+      document.removeEventListener("click", handleClick);
     };
   }, []);
 
-  const node = document.querySelector('#modal_root');
+  const node = document.querySelector("#modal_root");
   if (!node) return null;
 
   return ReactDOM.createPortal(
@@ -64,7 +52,7 @@ export function Post({ postId = '', subreddit = '', onClose }: IPostProps) {
       </div>
 
       <CommentForm />
-      <Comments comments={comments} />
+      <Comments comments={data} />
     </div>,
     node,
   );

@@ -18,6 +18,15 @@ import {
   PostsRequestSuccessAction,
 } from "./posts/actions";
 import { PostsState, postsReducer } from "./posts/reducer";
+import { CommentsState, commentsReducer } from "./comments/reducer";
+import {
+  COMMENTS_REQUEST,
+  COMMENTS_REQUEST_ERROR,
+  COMMENTS_REQUEST_SUCCESS,
+  CommentsRequestAction,
+  CommentsRequestErrorAction,
+  CommentsRequestSuccessAction,
+} from "./comments/actions";
 
 const UPDATE_COMMENT = "UPDATE_COMMENT";
 type UpdateCommentAction = {
@@ -48,6 +57,7 @@ export type RootState = {
   token: string;
   me: MeState;
   posts: PostsState;
+  comments: CommentsState;
 };
 
 const initialState: RootState = {
@@ -63,6 +73,11 @@ const initialState: RootState = {
     error: "",
     data: {},
   },
+  comments: {
+    loading: false,
+    error: "",
+    data: {},
+  },
 };
 
 type RootActions =
@@ -73,7 +88,10 @@ type RootActions =
   | MeRequestErrorAction
   | PostsRequestAction
   | PostsRequestSuccessAction
-  | PostsRequestErrorAction;
+  | PostsRequestErrorAction
+  | CommentsRequestAction
+  | CommentsRequestSuccessAction
+  | CommentsRequestErrorAction;
 
 export const rootReducer: Reducer<RootState, RootActions> = (state = initialState, action) => {
   switch (action.type) {
@@ -100,6 +118,13 @@ export const rootReducer: Reducer<RootState, RootActions> = (state = initialStat
       return {
         ...state,
         posts: postsReducer(state.posts, action),
+      };
+    case COMMENTS_REQUEST:
+    case COMMENTS_REQUEST_SUCCESS:
+    case COMMENTS_REQUEST_ERROR:
+      return {
+        ...state,
+        comments: commentsReducer(state.comments, action),
       };
     default:
       return state;

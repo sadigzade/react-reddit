@@ -67,6 +67,6 @@ export const postsRequestAsync =
       })
       .catch((error) => {
         console.log(error);
-        dispatch(postsRequestError(error));
+        dispatch(postsRequestError(String(error)));
       });
   };
