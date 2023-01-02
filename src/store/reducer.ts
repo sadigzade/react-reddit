@@ -21,9 +21,11 @@ import { PostsState, postsReducer } from "./posts/reducer";
 import { CommentsState, commentsReducer } from "./comments/reducer";
 import {
   COMMENTS_REQUEST,
+  COMMENTS_REQUEST_CLEAR,
   COMMENTS_REQUEST_ERROR,
   COMMENTS_REQUEST_SUCCESS,
   CommentsRequestAction,
+  CommentsRequestClearAction,
   CommentsRequestErrorAction,
   CommentsRequestSuccessAction,
 } from "./comments/actions";
@@ -91,7 +93,8 @@ type RootActions =
   | PostsRequestErrorAction
   | CommentsRequestAction
   | CommentsRequestSuccessAction
-  | CommentsRequestErrorAction;
+  | CommentsRequestErrorAction
+  | CommentsRequestClearAction;
 
 export const rootReducer: Reducer<RootState, RootActions> = (state = initialState, action) => {
   switch (action.type) {
@@ -122,6 +125,7 @@ export const rootReducer: Reducer<RootState, RootActions> = (state = initialStat
     case COMMENTS_REQUEST:
     case COMMENTS_REQUEST_SUCCESS:
     case COMMENTS_REQUEST_ERROR:
+    case COMMENTS_REQUEST_CLEAR:
       return {
         ...state,
         comments: commentsReducer(state.comments, action),

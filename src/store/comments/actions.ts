@@ -51,6 +51,17 @@ export const commentsRequestError: ActionCreator<CommentsRequestErrorAction> = (
   };
 };
 
+export const COMMENTS_REQUEST_CLEAR = "COMMENTS_REQUEST_CLEAR";
+export type CommentsRequestClearAction = {
+  type: typeof COMMENTS_REQUEST_CLEAR;
+  data: ICommentsData[];
+};
+export const commentsRequestClear = () => {
+  return {
+    type: COMMENTS_REQUEST_CLEAR,
+  };
+};
+
 export const commentsRequestAsync =
   (subreddit: string, postId: string): ThunkAction<void, RootState, unknown, Action<string>> =>
   (dispatch) => {

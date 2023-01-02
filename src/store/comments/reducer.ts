@@ -1,9 +1,11 @@
 import { Reducer } from "react";
 import {
   COMMENTS_REQUEST,
+  COMMENTS_REQUEST_CLEAR,
   COMMENTS_REQUEST_ERROR,
   COMMENTS_REQUEST_SUCCESS,
   CommentsRequestAction,
+  CommentsRequestClearAction,
   CommentsRequestErrorAction,
   CommentsRequestSuccessAction,
   ICommentsData,
@@ -18,7 +20,8 @@ export type CommentsState = {
 type CommentsActions =
   | CommentsRequestAction
   | CommentsRequestSuccessAction
-  | CommentsRequestErrorAction;
+  | CommentsRequestErrorAction
+  | CommentsRequestClearAction;
 
 export const commentsReducer: Reducer<CommentsState, CommentsActions> = (state, action) => {
   switch (action.type) {
@@ -37,6 +40,12 @@ export const commentsReducer: Reducer<CommentsState, CommentsActions> = (state, 
       return {
         ...state,
         error: action.error,
+        loading: false,
+      };
+    case COMMENTS_REQUEST_CLEAR:
+      return {
+        ...state,
+        data: [],
         loading: false,
       };
     default:

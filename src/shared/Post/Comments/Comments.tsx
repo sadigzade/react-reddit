@@ -9,8 +9,6 @@ interface ICommentsProps {
 }
 
 export function Comments({ comments }: ICommentsProps) {
-  console.log(comments);
-
   return (
     <ul>
       {comments &&
