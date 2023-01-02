@@ -1,14 +1,13 @@
+import { Action, ActionCreator } from "redux";
 import { ThunkAction } from "redux-thunk";
 import { RootState } from "../reducer";
-import { Action, ActionCreator } from "redux";
 
 export const SET_TOKEN = "SET_TOKEN";
 export type SetTokenAction = {
   type: typeof SET_TOKEN;
   token: string;
 };
-
-export const setToken: ActionCreator<SetTokenAction> = (token) => {
+export const setToken: ActionCreator<SetTokenAction> = (token: string) => {
   return {
     type: SET_TOKEN,
     token,

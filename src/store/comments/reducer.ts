@@ -4,6 +4,8 @@ import {
   COMMENTS_REQUEST_CLEAR,
   COMMENTS_REQUEST_ERROR,
   COMMENTS_REQUEST_SUCCESS,
+  COMMENT_UPDATE,
+  CommentUpdateAction,
   CommentsRequestAction,
   CommentsRequestClearAction,
   CommentsRequestErrorAction,
@@ -15,13 +17,15 @@ export type CommentsState = {
   loading: boolean;
   error: string;
   data: ICommentsData[];
+  commentText: string;
 };
 
 type CommentsActions =
   | CommentsRequestAction
   | CommentsRequestSuccessAction
   | CommentsRequestErrorAction
-  | CommentsRequestClearAction;
+  | CommentsRequestClearAction
+  | CommentUpdateAction;
 
 export const commentsReducer: Reducer<CommentsState, CommentsActions> = (state, action) => {
   switch (action.type) {
@@ -46,6 +50,12 @@ export const commentsReducer: Reducer<CommentsState, CommentsActions> = (state, 
       return {
         ...state,
         data: [],
+        loading: false,
+      };
+    case COMMENT_UPDATE:
+      return {
+        ...state,
+        commentText: action.text,
         loading: false,
       };
     default:

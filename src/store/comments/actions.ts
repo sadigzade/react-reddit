@@ -62,6 +62,18 @@ export const commentsRequestClear = () => {
   };
 };
 
+export const COMMENT_UPDATE = "COMMENT_UPDATE";
+export type CommentUpdateAction = {
+  type: typeof COMMENT_UPDATE;
+  text: string;
+};
+export const commentUpdate: ActionCreator<CommentUpdateAction> = (text) => {
+  return {
+    type: COMMENT_UPDATE,
+    text,
+  };
+};
+
 export const commentsRequestAsync =
   (subreddit: string, postId: string): ThunkAction<void, RootState, unknown, Action<string>> =>
   (dispatch) => {

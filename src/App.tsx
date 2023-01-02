@@ -11,7 +11,7 @@ import { Content } from "./shared/Content";
 import { CardsList } from "./shared/CardsList";
 
 import { rootReducer } from "./store/reducer";
-import { setToken } from "./store/token/actions";
+import { saveToken } from "./store/token/actions";
 
 import "./main.global.scss";
 
@@ -21,9 +21,7 @@ function AppComponent() {
   const dispatch = useDispatch<any>();
 
   React.useEffect(() => {
-    if (window.__token__ && window.__token__ !== "undefined") {
-      dispatch(setToken(window.__token__));
-    }
+    dispatch(saveToken());
   }, []);
 
   return (

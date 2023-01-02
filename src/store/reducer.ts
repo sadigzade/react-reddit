@@ -8,7 +8,6 @@ import {
   MeRequestSuccessAction,
 } from "./me/actions";
 import { MeState, meReducer } from "./me/reducer";
-import { tokenReducer } from "./token/reducer";
 import {
   POSTS_REQUEST,
   POSTS_REQUEST_ERROR,
@@ -24,38 +23,17 @@ import {
   COMMENTS_REQUEST_CLEAR,
   COMMENTS_REQUEST_ERROR,
   COMMENTS_REQUEST_SUCCESS,
+  COMMENT_UPDATE,
+  CommentUpdateAction,
   CommentsRequestAction,
   CommentsRequestClearAction,
   CommentsRequestErrorAction,
   CommentsRequestSuccessAction,
 } from "./comments/actions";
-
-const UPDATE_COMMENT = "UPDATE_COMMENT";
-type UpdateCommentAction = {
-  type: typeof UPDATE_COMMENT;
-  text: string;
-};
-export const updateComment: ActionCreator<UpdateCommentAction> = (text) => {
-  return {
-    type: UPDATE_COMMENT,
-    text,
-  };
-};
-
-export const SET_TOKEN = "SET_TOKEN";
-export type SetTokenAction = {
-  type: typeof SET_TOKEN;
-  token: string;
-};
-export const setToken: ActionCreator<SetTokenAction> = (token) => {
-  return {
-    type: SET_TOKEN,
-    token,
-  };
-};
+import { SET_TOKEN, SetTokenAction } from "./token/actions";
+import { tokenReducer } from "./token/reducer";
 
 export type RootState = {
-  commentText: string;
   token: string;
   me: MeState;
   posts: PostsState;
@@ -63,7 +41,6 @@ export type RootState = {
 };
 
 const initialState: RootState = {
-  commentText: "",
   token: "",
   me: {
     loading: false,
@@ -79,11 +56,11 @@ const initialState: RootState = {
     loading: false,
     error: "",
     data: [],
+    commentText: "",
   },
 };
 
 type RootActions =
-  | UpdateCommentAction
   | SetTokenAction
   | MeRequestAction
   | MeRequestSuccessAction
@@ -94,19 +71,15 @@ type RootActions =
   | CommentsRequestAction
   | CommentsRequestSuccessAction
   | CommentsRequestErrorAction
-  | CommentsRequestClearAction;
+  | CommentsRequestClearAction
+  | CommentUpdateAction;
 
 export const rootReducer: Reducer<RootState, RootActions> = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_COMMENT:
-      return {
-        ...state,
-        commentText: action.text,
-      };
     case SET_TOKEN:
       return {
         ...state,
-        token: action.token,
+        token: tokenReducer(state.token, action),
       };
     case ME_REQUEST:
     case ME_REQUEST_SUCCESS:
@@ -126,6 +99,7 @@ export const rootReducer: Reducer<RootState, RootActions> = (state = initialStat
     case COMMENTS_REQUEST_SUCCESS:
     case COMMENTS_REQUEST_ERROR:
     case COMMENTS_REQUEST_CLEAR:
+    case COMMENT_UPDATE:
       return {
         ...state,
         comments: commentsReducer(state.comments, action),
