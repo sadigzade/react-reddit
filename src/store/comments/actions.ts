@@ -28,10 +28,10 @@ export const commentsRequest: ActionCreator<CommentsRequestAction> = () => {
 export const COMMENTS_REQUEST_SUCCESS = "COMMENTS_REQUEST_SUCCESS";
 export type CommentsRequestSuccessAction = {
   type: typeof COMMENTS_REQUEST_SUCCESS;
-  data: ICommentsData;
+  data: ICommentsData[];
 };
 export const commentsRequestSuccess: ActionCreator<CommentsRequestSuccessAction> = (
-  data: ICommentsData,
+  data: ICommentsData[],
 ) => {
   return {
     type: COMMENTS_REQUEST_SUCCESS,

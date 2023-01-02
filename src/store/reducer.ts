@@ -76,7 +76,7 @@ const initialState: RootState = {
   comments: {
     loading: false,
     error: "",
-    data: {},
+    data: [],
   },
 };
 

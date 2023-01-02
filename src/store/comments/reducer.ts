@@ -12,7 +12,7 @@ import {
 export type CommentsState = {
   loading: boolean;
   error: string;
-  data: ICommentsData;
+  data: ICommentsData[];
 };
 
 type CommentsActions =
