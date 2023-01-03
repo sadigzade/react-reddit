@@ -3,50 +3,41 @@ import styles from "./commentform.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../store/reducer";
 import { commentUpdate } from "../../../store/comments/actions";
+import { Field, Form, Formik } from "formik";
 
 export function CommentForm() {
   const value = useSelector<RootState, string>((state) => state.comments.commentText);
-  const [touched, setTouched] = React.useState(false);
-  // const [valueError, setValueError] = React.useState("");
   const dispatch = useDispatch();
-
   const refTextarea = React.useRef<HTMLTextAreaElement>(null);
 
-  function handleSubmit(event: FormEvent) {
-    event.preventDefault();
-    setTouched(true);
-
-    const isFormValid = !validateValue();
-
-    if (!isFormValid) return;
-
-    alert("Форма отправлена");
-  }
-
-  function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
-    dispatch(commentUpdate(event.target.value));
-  }
-
-  function validateValue() {
+  function validateValue(value: string) {
+    dispatch(commentUpdate(value));
     if (value.length <= 3) return "Введите больше 3-х символов";
-    return "";
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <textarea
-        className={styles.input}
-        value={value}
-        onChange={handleChange}
-        ref={refTextarea}
-        aria-invalid={validateValue() ? "true" : undefined}
-      />
-      {touched && validateValue() && (
-        <div className={styles.validateMessage}>{validateValue()}</div>
+    <Formik
+      initialValues={{
+        commentText: value,
+      }}
+      onSubmit={(value) => alert("Форма отправлена")}>
+      {({ errors, touched }) => (
+        <Form className={styles.form}>
+          <Field
+            as="textarea"
+            name="commentText"
+            className={styles.input}
+            ref={refTextarea}
+            validate={validateValue}
+          />
+          {errors.commentText && touched.commentText && (
+            <div className={styles.validateMessage}>{errors.commentText}</div>
+          )}
+          <button type="submit" className={styles.button}>
+            Комментировать
+          </button>
+        </Form>
       )}
-      <button type="submit" className={styles.button}>
-        Комментировать
-      </button>
-    </form>
+    </Formik>
   );
 }
