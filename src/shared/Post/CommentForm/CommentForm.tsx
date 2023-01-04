@@ -8,7 +8,6 @@ import { Field, Form, Formik } from "formik";
 export function CommentForm() {
   const value = useSelector<RootState, string>((state) => state.comments.commentText);
   const dispatch = useDispatch();
-  const refTextarea = React.useRef<HTMLTextAreaElement>(null);
 
   function validateValue(value: string) {
     dispatch(commentUpdate(value));
@@ -27,7 +26,6 @@ export function CommentForm() {
             as="textarea"
             name="commentText"
             className={styles.input}
-            ref={refTextarea}
             validate={validateValue}
           />
           {errors.commentText && touched.commentText && (

@@ -4,21 +4,18 @@ import styles from "./post.scss";
 import { CommentForm } from "./CommentForm";
 import { Comments } from "./Comments";
 import { useComments } from "../../hooks/useComments";
+import { useNavigate, useParams } from "react-router-dom";
 
-interface IPostProps {
-  postId?: string;
-  subreddit?: string;
-  onClose?: () => void;
-}
-
-export function Post({ postId = "", subreddit = "", onClose }: IPostProps) {
+export function Post() {
+  const { id = "", subreddit = "" } = useParams();
+  const [data] = useComments(subreddit, id);
   const ref = React.useRef<HTMLDivElement>(null);
-  const [data] = useComments(subreddit, postId);
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     function handleClick(event: MouseEvent) {
       if (event.target instanceof Node && !ref.current?.contains(event.target)) {
-        onClose?.();
+        navigate("/");
       }
     }
 
