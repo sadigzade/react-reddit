@@ -57,16 +57,23 @@ export const postsRequestError: ActionCreator<PostsRequestErrorAction> = (error:
 export const postsRequestAsync =
   (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch, getState) => {
     dispatch(postsRequest());
-    axios
-      .get("https://oauth.reddit.com/best.json?sr_detail=true", {
-        headers: { Authorization: `bearer ${getState().token}` },
-      })
-      .then((res) => {
-        const { children } = res.data.data;
+
+    async function load() {
+      try {
+        const {
+          data: {
+            data: { children },
+          },
+        } = await axios.get("https://oauth.reddit.com/best.json?sr_detail=true", {
+          headers: { Authorization: `bearer ${getState().token}` },
+        });
+
         dispatch(postsRequestSuccess(children));
-      })
-      .catch((error) => {
-        console.log(error);
+      } catch (error) {
+        console.error(error);
         dispatch(postsRequestError(String(error)));
-      });
+      }
+    }
+
+    load();
   };

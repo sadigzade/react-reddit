@@ -5,7 +5,8 @@ import { IPostsData, postsRequestAsync } from "../store/posts/actions";
 
 export function usePostsData() {
   const data = useSelector<RootState, IPostsData>((state) => state.posts.data);
-  // const loading = useSelector<RootState, boolean>((state) => state.posts.loading);
+  const loading = useSelector<RootState, boolean>((state) => state.posts.loading);
+  const error = useSelector<RootState, string>((state) => state.posts.error);
 
   const token = useSelector<RootState, string>((state) => state.token);
   const dispatch = useDispatch<any>();
@@ -16,5 +17,5 @@ export function usePostsData() {
     }
   }, [token]);
 
-  return [data];
+  return { data, loading, error };
 }
