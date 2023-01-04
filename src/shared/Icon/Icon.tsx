@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './icon.scss';
+import React from "react";
+import styles from "./icon.scss";
 import {
   BlockIcon,
   CommentsIcon,
@@ -9,17 +9,19 @@ import {
   ShareIcon,
   WarningIcon,
   SendIcon,
-} from '../Icons';
+  AddIcon,
+} from "../Icons";
 
 export enum EIcons {
-  comments = 'comments',
-  share = 'share',
-  block = 'block',
-  save = 'save',
-  warning = 'warning',
-  menu = 'menu',
-  anon = 'anon',
-  send = 'send',
+  comments = "comments",
+  share = "share",
+  block = "block",
+  save = "save",
+  warning = "warning",
+  menu = "menu",
+  anon = "anon",
+  send = "send",
+  add = "add",
 }
 
 export type TIconSize = 14 | 16 | 19 | 20 | 30 | 50;
@@ -39,6 +41,7 @@ export function Icon({ name, size }: IIconProps) {
     [EIcons.menu]: <MenuIcon size={size} />,
     [EIcons.anon]: <IconAnon size={size} />,
     [EIcons.send]: <SendIcon size={size} />,
+    [EIcons.add]: <AddIcon size={size} />,
   };
 
   return icons[name];

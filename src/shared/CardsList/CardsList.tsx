@@ -7,6 +7,7 @@ import { postsRequestAsync } from "../../store/posts/actions";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/reducer";
+import { EIcons, Icon } from "../Icon";
 
 export function CardsList() {
   const skeletons = [...new Array(5)].map((val, index) => (
@@ -25,47 +26,63 @@ export function CardsList() {
       (entry) => {
         if (entry[0].isIntersecting) {
           dispatch(postsRequestAsync());
-          console.log("load more");
         }
       },
       {
-        rootMargin: "100px",
+        rootMargin: "0px",
       },
     );
 
-    if (bottomOfRef.current) {
+    if (bottomOfRef.current && token && data.length % 20 !== 0) {
       observer.observe(bottomOfRef.current);
     }
 
     return () => {
-      if (bottomOfRef.current) {
+      if (bottomOfRef.current && token) {
         observer.unobserve(bottomOfRef.current);
       }
     };
   }, [bottomOfRef.current, after, token]);
 
+  function handleClickLoadMore() {
+    dispatch(postsRequestAsync());
+  }
+
   return (
-    <ul className={styles.cardsList}>
-      {Object.values(data).length === 0 && !loading && !error && (
-        <div role="alert">
-          {skeletons}
-          <div className={styles.error}>
-            &#128577; <br /> Хмм... здесь пока пусто
+    <>
+      <ul className={styles.cardsList}>
+        {Object.values(data).length === 0 && !loading && !error && (
+          <div role="alert">
+            {skeletons}
+            <div className={styles.error}>
+              &#128577; <br /> Хмм... здесь пока пусто
+            </div>
           </div>
-        </div>
-      )}
-      {loading
-        ? skeletons
-        : Object.values(data).map((post) => <Card key={post.data?.id} data={post.data} />)}
-      <div ref={bottomOfRef} />
-      {error && (
-        <div role="alert">
-          {skeletons}
-          <div className={styles.error}>
-            &#128683; <br /> К сожалению, что-то пошло не так
+        )}
+
+        {Object.values(data).map((post) => (
+          <Card key={post.data?.id} data={post.data} />
+        ))}
+
+        {loading && skeletons}
+
+        <div ref={bottomOfRef} style={{ display: loading ? "none" : "" }} />
+
+        {error && (
+          <div role="alert">
+            {skeletons}
+            <div className={styles.error}>
+              &#128683; <br /> К сожалению, что-то пошло не так
+            </div>
           </div>
+        )}
+      </ul>
+      {data.length && data.length % 20 === 0 ? (
+        <div className={styles.loadMore} onClick={handleClickLoadMore}>
+          <Icon name={EIcons.add} size={19} />
+          <span>Загрузить еще...</span>
         </div>
-      )}
-    </ul>
+      ) : null}
+    </>
   );
 }
