@@ -2,6 +2,7 @@ import { Action, ActionCreator } from "redux";
 import { ThunkAction } from "redux-thunk";
 import { RootState } from "../reducer";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 export interface IPostsData {
   kind?: string;
@@ -34,11 +35,16 @@ export const POSTS_REQUEST_SUCCESS = "POSTS_REQUEST_SUCCESS";
 export type PostsRequestSuccessAction = {
   type: typeof POSTS_REQUEST_SUCCESS;
   data: IPostsData;
+  after: string;
 };
-export const postsRequestSuccess: ActionCreator<PostsRequestSuccessAction> = (data: IPostsData) => {
+export const postsRequestSuccess: ActionCreator<PostsRequestSuccessAction> = (
+  data: IPostsData,
+  after: string,
+) => {
   return {
     type: POSTS_REQUEST_SUCCESS,
     data,
+    after,
   };
 };
 
@@ -55,25 +61,25 @@ export const postsRequestError: ActionCreator<PostsRequestErrorAction> = (error:
 };
 
 export const postsRequestAsync =
-  (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch, getState) => {
+  (): ThunkAction<void, RootState, unknown, Action<string>> => async (dispatch, getState) => {
     dispatch(postsRequest());
 
-    async function load() {
-      try {
-        const {
-          data: {
-            data: { children },
-          },
-        } = await axios.get("https://oauth.reddit.com/best.json?sr_detail=true", {
-          headers: { Authorization: `bearer ${getState().token}` },
-        });
+    try {
+      const {
+        data: {
+          data: { after, children },
+        },
+      } = await axios.get("https://oauth.reddit.com/best.json?sr_detail=true", {
+        headers: { Authorization: `bearer ${getState().token}` },
+        params: {
+          limit: 10,
+          after: getState().posts.after,
+        },
+      });
 
-        dispatch(postsRequestSuccess(children));
-      } catch (error) {
-        console.error(error);
-        dispatch(postsRequestError(String(error)));
-      }
+      dispatch(postsRequestSuccess(children, after));
+    } catch (error) {
+      console.log(error);
+      dispatch(postsRequestError(String(error)));
     }
-
-    load();
   };

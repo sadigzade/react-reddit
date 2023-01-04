@@ -12,7 +12,8 @@ import {
 export type PostsState = {
   loading: boolean;
   error: string;
-  data: IPostsData;
+  data: IPostsData[];
+  after: string;
 };
 
 type PostsActions = PostsRequestAction | PostsRequestSuccessAction | PostsRequestErrorAction;
@@ -27,7 +28,8 @@ export const postsReducer: Reducer<PostsState, PostsActions> = (state, action) =
     case POSTS_REQUEST_SUCCESS:
       return {
         ...state,
-        data: action.data,
+        data: [...(<[]>state.data), ...(<[]>action.data)],
+        after: action.after,
         loading: false,
       };
     case POSTS_REQUEST_ERROR:

@@ -50,7 +50,8 @@ const initialState: RootState = {
   posts: {
     loading: false,
     error: "",
-    data: {},
+    data: [],
+    after: "",
   },
   comments: {
     loading: false,
