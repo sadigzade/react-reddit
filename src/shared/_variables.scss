@@ -1,0 +1,12 @@
+$black: #333333;
+$orange: #cc6633;
+$green: #a4cc33;
+$whiteLightness: 100%;
+$white: hsl(0, 0%, var(--whiteLightness));
+$grayF4: hsl(0, 0%, calc(var(--whiteLightness) - 4%));
+$greyF3: hsl(0, 0%, calc(var(--whiteLightness) - 5%));
+$greyEC: hsl(0, 0%, calc(var(--whiteLightness) - 7%));
+$greyD9: hsl(0, 0%, calc(var(--whiteLightness) - 15%));
+$greyC4: hsl(0, 0%, calc(var(--whiteLightness) - 23%));
+$grey99: hsl(0, 0%, calc(var(--whiteLightness) - 40%));
+$grey66: hsl(0, 0%, calc(var(--whiteLightness) - 60%));

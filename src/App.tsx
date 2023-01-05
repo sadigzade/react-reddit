@@ -1,10 +1,10 @@
 import React from "react";
 import thunk from "redux-thunk";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { hot } from "react-hot-loader/root";
 import { Provider, useDispatch } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
 import { composeWithDevTools } from "@redux-devtools/extension";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import { Header } from "./shared/Header";
 import { Layout } from "./shared/Layout";
@@ -35,13 +35,11 @@ function AppComponent() {
           <Layout>
             <Header />
             <Content>
-              <CardsList />
-
               <Routes>
-                <Route
-                  path="posts/:subreddit/:id"
-                  element={<Post /* postId={id} subreddit={subreddit} */ />}
-                />
+                {/* <Route path="/posts/:id" element={<Post />} /> */}
+                <Route path="/auth" element={<Navigate replace={true} to="/posts" />} />
+                <Route path="/" element={<Navigate replace={true} to="/posts" />} />
+                <Route path="/posts" element={<CardsList />} />
               </Routes>
             </Content>
           </Layout>
@@ -56,5 +54,3 @@ export const App = hot(() => (
     <AppComponent />
   </Provider>
 ));
-
-//<Post postId={postId} subreddit={subreddit} onClose={() => setIsModalOpen(false)} />

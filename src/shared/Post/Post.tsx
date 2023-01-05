@@ -15,7 +15,7 @@ export function Post() {
   React.useEffect(() => {
     function handleClick(event: MouseEvent) {
       if (event.target instanceof Node && !ref.current?.contains(event.target)) {
-        navigate("/");
+        navigate("/posts");
       }
     }
 
