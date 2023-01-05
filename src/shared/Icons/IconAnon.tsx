@@ -1,5 +1,5 @@
-import React from 'react';
-import { IIconTemplateProps } from './IIconTemplateProps';
+import React from "react";
+import { IIconTemplateProps } from "./IIconTemplateProps";
 
 export function IconAnon({ size }: IIconTemplateProps) {
   return (

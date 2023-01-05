@@ -1,9 +1,9 @@
-import React from 'react';
-import styles from './card.scss';
-import { Controls } from './Controls';
-import { Menu } from './Menu';
-import { Preview } from './Preview';
-import { TextContent } from './TextContent';
+import React from "react";
+import styles from "./card.scss";
+import { Controls } from "./Controls";
+import { Menu } from "./Menu";
+import { Preview } from "./Preview";
+import { TextContent } from "./TextContent";
 
 interface ICardProps {
   data?: {

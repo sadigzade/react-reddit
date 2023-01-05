@@ -10,6 +10,7 @@ import {
   WarningIcon,
   SendIcon,
   AddIcon,
+  ErrorIcon,
 } from "../Icons";
 
 export enum EIcons {
@@ -22,9 +23,10 @@ export enum EIcons {
   anon = "anon",
   send = "send",
   add = "add",
+  error = "error",
 }
 
-export type TIconSize = 14 | 16 | 19 | 20 | 30 | 50;
+export type TIconSize = 14 | 16 | 19 | 20 | 30 | 50 | 180;
 
 interface IIconProps {
   name: EIcons;
@@ -42,6 +44,7 @@ export function Icon({ name, size }: IIconProps) {
     [EIcons.anon]: <IconAnon size={size} />,
     [EIcons.send]: <SendIcon size={size} />,
     [EIcons.add]: <AddIcon size={size} />,
+    [EIcons.error]: <ErrorIcon size={size} />,
   };
 
   return icons[name];

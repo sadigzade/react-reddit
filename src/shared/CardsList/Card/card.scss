@@ -35,7 +35,7 @@ button {
   .card {
     background-color: transparent;
     flex-flow: row nowrap;
-    max-height: 107px;
+    max-height: 147px;
     padding: 20px 40px;
     border-radius: 0px;
 
@@ -52,7 +52,6 @@ button {
 @media all and (min-width: 1540px) {
   .card {
     padding: 20px 60px;
-    max-height: 147px;
     cursor: pointer;
 
     &:hover,

@@ -7,3 +7,4 @@ export * from "./WarningIcon";
 export * from "./IconAnon";
 export * from "./SendIcon";
 export * from "./AddIcon";
+export * from "./ErrorIcon";

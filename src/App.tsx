@@ -6,16 +6,17 @@ import { applyMiddleware, createStore } from "redux";
 import { composeWithDevTools } from "@redux-devtools/extension";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
+import { Post } from "./shared/Post";
 import { Header } from "./shared/Header";
 import { Layout } from "./shared/Layout";
 import { Content } from "./shared/Content";
+import { NotFound } from "./shared/NotFound";
 import { CardsList } from "./shared/CardsList";
 
 import { rootReducer } from "./store/reducer";
 import { saveToken } from "./store/token/actions";
 
 import "./main.global.scss";
-import { Post } from "./shared/Post";
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
@@ -36,10 +37,11 @@ function AppComponent() {
             <Header />
             <Content>
               <Routes>
-                {/* <Route path="/posts/:id" element={<Post />} /> */}
-                <Route path="/auth" element={<Navigate replace={true} to="/posts" />} />
-                <Route path="/" element={<Navigate replace={true} to="/posts" />} />
+                <Route path="/posts/:subreddit/:id" element={<Post />} />
+                <Route path="/auth" element={<Navigate to="/posts" replace />} />
+                <Route path="/" element={<Navigate to="/posts" replace />} />
                 <Route path="/posts" element={<CardsList />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </Content>
           </Layout>

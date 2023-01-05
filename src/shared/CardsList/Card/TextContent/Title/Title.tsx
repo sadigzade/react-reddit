@@ -11,7 +11,7 @@ interface ITitleProps {
 export function Title({ postId, subreddit, title }: ITitleProps) {
   return (
     <h2 className={styles.title}>
-      <Link to={`posts/${subreddit}/${postId}`} className={styles.postLink}>
+      <Link to={`${subreddit}/${postId}`} className={styles.postLink}>
         {title}
       </Link>
     </h2>
